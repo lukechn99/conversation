@@ -43,6 +43,12 @@ def load_agents() -> List[agent]:
 def converse(agents: List[agent]):
     if not agents:
         pass
+    conversation_stack = []
+
+    # rotate through the agents to offer new topics if the stack runs out
+    for agent in agents:
+        if conversation_stack:
+            pass
 
 
 def main():
