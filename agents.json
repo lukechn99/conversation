@@ -1,0 +1,29 @@
+{
+    "Dylan": {
+        "engagement": 1.0,
+        "attributes": [
+            "business",
+            "family",
+            "travel",
+            "planes",
+            "fine dining",
+            "fitness",
+            "christianity",
+            "politics",
+            "environment",
+            "career"
+        ]
+    },
+    "Lucy": {
+        "engagement": 1.0,
+        "attributes": [
+            "cooking",
+            "family",
+            "technology",
+            "politics",
+            "fine dining",
+            "career",
+            "christianity"
+        ]
+    }
+}
