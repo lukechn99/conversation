@@ -1,0 +1,54 @@
+__main__ - INFO - 2021-08-29 21:45:01,701 - starting conversation
+__main__ - INFO - 2021-08-29 21:45:01,702 - successfully imported agents
+__main__ - INFO - 2021-08-29 21:45:01,702 - loading agents
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:01,706 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:02,164 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=business HTTP/1.1" 200 296
+__main__ - INFO - 2021-08-29 21:45:02,166 - fetched the business article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:02,169 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:02,636 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=family HTTP/1.1" 200 307
+__main__ - INFO - 2021-08-29 21:45:02,638 - fetched the family article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:02,643 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:03,001 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=travel HTTP/1.1" 200 296
+__main__ - INFO - 2021-08-29 21:45:03,002 - fetched the travel article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:03,007 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:03,342 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=planes HTTP/1.1" 200 134
+__main__ - INFO - 2021-08-29 21:45:03,343 - fetched the planes article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:03,347 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:03,908 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=fine+dining HTTP/1.1" 200 306
+__main__ - INFO - 2021-08-29 21:45:03,910 - fetched the fine dining article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:03,914 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:04,303 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=fitness HTTP/1.1" 200 None
+__main__ - INFO - 2021-08-29 21:45:04,304 - fetched the fitness article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:04,307 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:04,679 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=christianity HTTP/1.1" 200 310
+__main__ - INFO - 2021-08-29 21:45:04,681 - fetched the christianity article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:04,687 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:05,199 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=politics HTTP/1.1" 200 328
+__main__ - INFO - 2021-08-29 21:45:05,201 - fetched the politics article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:05,208 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:05,662 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=environment HTTP/1.1" 200 289
+__main__ - INFO - 2021-08-29 21:45:05,669 - fetched the environment article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:05,675 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:06,211 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=career HTTP/1.1" 200 321
+__main__ - INFO - 2021-08-29 21:45:06,218 - fetched the career article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:06,225 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:06,710 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=cooking HTTP/1.1" 200 298
+__main__ - INFO - 2021-08-29 21:45:06,722 - fetched the cooking article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:06,728 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:07,109 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=family HTTP/1.1" 200 307
+__main__ - INFO - 2021-08-29 21:45:07,112 - fetched the family article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:07,117 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:07,549 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=technology HTTP/1.1" 200 328
+__main__ - INFO - 2021-08-29 21:45:07,552 - fetched the technology article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:07,557 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:07,899 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=politics HTTP/1.1" 200 328
+__main__ - INFO - 2021-08-29 21:45:07,902 - fetched the politics article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:07,907 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:08,260 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=fine+dining HTTP/1.1" 200 306
+__main__ - INFO - 2021-08-29 21:45:08,265 - fetched the fine dining article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:08,272 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:08,618 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=career HTTP/1.1" 200 321
+__main__ - INFO - 2021-08-29 21:45:08,621 - fetched the career article
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:08,626 - Starting new HTTPS connection (1): en.wikipedia.org
+urllib3.connectionpool - DEBUG - 2021-08-29 21:45:09,066 - https://en.wikipedia.org:443 "GET /w/api.php?action=query&exchars=300&prop=extracts&format=json&explaintext=True&titles=christianity HTTP/1.1" 200 310
+__main__ - INFO - 2021-08-29 21:45:09,068 - fetched the christianity article

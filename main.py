@@ -4,8 +4,16 @@ from typing import List, Dict
 import requests
 import json
 import logging
-logging.basicConfig(filename='app.log', filemode='w',
-                    format='%(name)s - %(levelname)s - %(asctime)s - %(message)s', level=logging.INFO)
+
+'''
+Resources
+https://en.wikipedia.org/w/api.php?action=help&modules=query%2Bextracts
+'''
+
+
+
+logging.basicConfig(filename='conversation_run.log', filemode='w',
+                    format='%(name)s - %(levelname)s - %(asctime)s - %(message)s', level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 FILE = "agents.json"
@@ -23,6 +31,7 @@ That's very cool, I like ...
 
 """
 How to fuzzy match terms?
+
 """
 
 class topic_content:
@@ -51,6 +60,9 @@ class conversation_stack:
     def size(self) -> int:
         return len(self.stack)
 
+# come up with core topics and map each topic to a core
+# then when matching conversation topics, check for core instead of 
+# doing exact match
 
 def load_article(topic: str) -> topic_content:
     '''
@@ -63,19 +75,22 @@ def load_article(topic: str) -> topic_content:
 
     PARAMS = {
         "action": "query",
+        "exchars": 300,
+        "prop": "extracts",
         "format": "json",
-        "list": "search",
-        "srsearch": topic
+        "explaintext": True,
+        "titles": topic
     }
 
     response = requests_session.get(url=URL, params=PARAMS)
     response_json = response.json()
 
-    contents = {}
-    for search_result in response_json["search"]:
-        contents[search_result["title"]] = search_result["snippet"]
-    topic_content_obj = topic_content(topic, contents)
+    id = list(response_json["query"]["pages"].keys())[0]
+    contents = response_json["query"]["pages"][id]["extract"]
     
+    topic_content_obj = topic_content(topic, json.dumps(contents, indent=4))
+    
+    logger.info("fetched the {} article".format(topic))
     return topic_content_obj
 
 
@@ -84,10 +99,11 @@ def load_agents() -> List[agent]:
     try:
         with open(FILE, 'r') as f:
             data = json.load(f)
-            for entry in list(data.keys):
+            for entry in list(data.keys()):
                 new_agent = agent(
                     entry, data[entry]["engagement"], data[entry]["attributes"])
                 agents.append(new_agent)
+        logger.info("successfully imported agents")
         return agents
     except Exception as e:
         logger.error(str(e))
@@ -96,14 +112,17 @@ def load_agents() -> List[agent]:
 
 def converse(agents: List[agent]):
     if not agents:
+        logger.info("no agents found")
         pass
+
+    logger.info("loading agents")
     conversation = conversation_stack()
 
     # load a random first topic
     conversation.push("none")
     for agent in agents:
         for attr in agent.get_attributes():
-            print(load_article(attr))
+            print(load_article(attr).contents)
 
     # rotate through the agents to offer new topics if the stack runs out
     for agent in agents:
@@ -112,5 +131,9 @@ def converse(agents: List[agent]):
 
 
 def main():
+    logger.info("starting conversation")
     agents = load_agents()
     converse(agents)
+
+
+main()
