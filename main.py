@@ -1,6 +1,7 @@
 from agent import agent
-from typing import List
+from typing import List, Dict
 
+import requests
 import json
 import logging
 logging.basicConfig(filename='app.log', filemode='w',
@@ -24,6 +25,59 @@ That's very cool, I like ...
 How to fuzzy match terms?
 """
 
+class topic_content:
+    '''
+    Somehow I need to extract and map key terms in the topic content so that 
+    the topic can be easily matched with another topic
+    '''
+    def __init__ (self, _topic_name: str, _contents: Dict[str, str]):
+        self.topic_name = _topic_name
+        self.contents = _contents
+
+
+class conversation_stack:
+    '''
+    check size before popping
+    '''
+    def __init__(self, stack=[]):
+        self.stack = stack
+
+    def push(self, item: str):
+        self.stack.append(item)
+
+    def pop(self) -> str:
+        return self.stack.pop()
+
+    def size(self) -> int:
+        return len(self.stack)
+
+
+def load_article(topic: str) -> topic_content:
+    '''
+    uses http request to grab page contents from Wikipedia for the query "topic" 
+    and returns the results
+    '''
+    requests_session = requests.Session()
+
+    URL = "https://en.wikipedia.org/w/api.php"
+
+    PARAMS = {
+        "action": "query",
+        "format": "json",
+        "list": "search",
+        "srsearch": topic
+    }
+
+    response = requests_session.get(url=URL, params=PARAMS)
+    response_json = response.json()
+
+    contents = {}
+    for search_result in response_json["search"]:
+        contents[search_result["title"]] = search_result["snippet"]
+    topic_content_obj = topic_content(topic, contents)
+    
+    return topic_content_obj
+
 
 def load_agents() -> List[agent]:
     agents = []
@@ -43,11 +97,17 @@ def load_agents() -> List[agent]:
 def converse(agents: List[agent]):
     if not agents:
         pass
-    conversation_stack = []
+    conversation = conversation_stack()
+
+    # load a random first topic
+    conversation.push("none")
+    for agent in agents:
+        for attr in agent.get_attributes():
+            print(load_article(attr))
 
     # rotate through the agents to offer new topics if the stack runs out
     for agent in agents:
-        if conversation_stack:
+        if conversation:
             pass
 
 
