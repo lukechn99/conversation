@@ -11,6 +11,7 @@ import logging
 Resources
 https://en.wikipedia.org/w/api.php?action=help&modules=query%2Bextracts
 https://www.mediawiki.org/wiki/API:Search
+https://ocw.mit.edu/courses/brain-and-cognitive-sciences/9-591j-language-processing-fall-2004/lecture-notes/1101_sent_parsng.pdf
 '''
 
 logging.basicConfig(filename='conversation_run.log', filemode='w',
