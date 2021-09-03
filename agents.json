@@ -1,6 +1,6 @@
 {
     "Dylan": {
-        "engagement": 1.0,
+        "engagement": 10,
         "attributes": [
             "business",
             "family",
@@ -15,7 +15,7 @@
         ]
     },
     "Lucy": {
-        "engagement": 1.0,
+        "engagement": 10,
         "attributes": [
             "cooking",
             "family",

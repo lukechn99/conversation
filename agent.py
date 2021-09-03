@@ -1,6 +1,5 @@
 from typing import List
 
-
 class agent:
     def __init__(self, name, engagement, attributes):
         self.name = name
@@ -21,3 +20,14 @@ class agent:
 
     def get_name(self):
         return self.name
+
+    def can_relate(self, topic):
+        '''
+        We can alter this to use more realistic styles of topic matching later
+        '''
+        if topic in self.attributes:
+            return True
+        return False
+
+    def talk_about(self, topic):
+        pass

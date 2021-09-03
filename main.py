@@ -1,4 +1,6 @@
 from agent import agent
+from topic_content import topic_content
+from conversation_stack import conversation_stack
 from typing import List, Dict
 
 import requests
@@ -8,9 +10,8 @@ import logging
 '''
 Resources
 https://en.wikipedia.org/w/api.php?action=help&modules=query%2Bextracts
+https://www.mediawiki.org/wiki/API:Search
 '''
-
-
 
 logging.basicConfig(filename='conversation_run.log', filemode='w',
                     format='%(name)s - %(levelname)s - %(asctime)s - %(message)s', level=logging.DEBUG)
@@ -33,32 +34,6 @@ That's very cool, I like ...
 How to fuzzy match terms?
 
 """
-
-class topic_content:
-    '''
-    Somehow I need to extract and map key terms in the topic content so that 
-    the topic can be easily matched with another topic
-    '''
-    def __init__ (self, _topic_name: str, _contents: Dict[str, str]):
-        self.topic_name = _topic_name
-        self.contents = _contents
-
-
-class conversation_stack:
-    '''
-    check size before popping
-    '''
-    def __init__(self, stack=[]):
-        self.stack = stack
-
-    def push(self, item: str):
-        self.stack.append(item)
-
-    def pop(self) -> str:
-        return self.stack.pop()
-
-    def size(self) -> int:
-        return len(self.stack)
 
 # come up with core topics and map each topic to a core
 # then when matching conversation topics, check for core instead of 
@@ -119,10 +94,33 @@ def converse(agents: List[agent]):
     conversation = conversation_stack()
 
     # load a random first topic
-    conversation.push("none")
-    for agent in agents:
-        for attr in agent.get_attributes():
-            print(load_article(attr).contents)
+    conversation.push(agents[0].get_attributes()[0])
+    logger.info("pushed first topic {}".format(conversation.peek()))
+
+    while conversation.is_not_empty():
+        current_topic = conversation.peek()
+        logger.info("starting discussion on {}".format(current_topic))
+        # we default to having no one engage with the topic
+        engaged = False
+
+        for agent in agents: 
+            # if agent can relate to the current topic, say something
+            # and add topic to conversation
+            if agent.can_relate(current_topic):
+                agent.talk_about(current_topic)
+                conversation.push(current_topic)
+                engaged = True
+            # else move onto next agent
+
+        if not engaged:
+            # decrease each agent's engagement
+            for agent in agents:
+                agent.modify_engagement(-2)
+                if agent.get_engagement() <= 0:
+                    # TODO remove agent from conversation
+                    pass
+            # pop the topic
+            conversation.pop()
 
     # rotate through the agents to offer new topics if the stack runs out
     for agent in agents:
